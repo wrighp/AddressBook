@@ -123,5 +123,21 @@ namespace AddressBook.Api
             return _context.Address.Any(e => e.Id == id);
         }
 
+
+        
+        // GET: api/AddressesByCity
+        //Return type is a query so async/task is not needed
+        [HttpGet("AddressesByCity")]
+        public IQueryable<IGrouping<string, Address> > GetAddressByCity()
+        {
+            //StringComparer.InvariantCultureIgnoreCase is not understood by a queryable under Entity Framework
+            //Simply grouping by ToUpper() or ToUpperInvariant() will prevent query optimization
+            //Example: https://stackoverflow.com/questions/19602589/case-insensitive-string-comparison-not-working-in-c
+            //Example 2: https://stackoverflow.com/questions/3843060/linq-to-entities-case-sensitive-comparison
+            //Database column should be forced to ignore case ideally
+
+            //strings "London" and "london" are not equal and will be grouped separately without ToUpper(), however this is not optimal
+            return _context.Address.GroupBy(address => address.City.ToUpper());
+        }
     }
 }
