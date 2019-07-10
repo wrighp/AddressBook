@@ -45,7 +45,7 @@ Example of a GET response to /api/Addresses/AddressesByCity
       "lastName": "Test",
       "streetAddress": "123 Test St",
       "city": "New York",
-      "country": "Florida"
+      "country": "The Moon"
     }
   ]
 ]
