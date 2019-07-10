@@ -5,7 +5,7 @@ Razor Pages is used for easy CRUD manipulation on a Database Context (SQL in thi
 ![Alt text](/Media/addresses_page.png?raw=true "")
 
 Exposed API endpoints can be viewed and tested via /swagger
-![Alt text](/images/swagger_page.png?raw=true "")
+![Alt text](/Media/swagger_page.png?raw=true "")
 
 Example of a GET response to /api/Addresses/AddressesByCity
 ```
